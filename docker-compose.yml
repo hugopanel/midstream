@@ -1,0 +1,17 @@
+﻿services:
+  api:
+    image: api
+    build:
+      context: .
+      dockerfile: Api/Dockerfile
+  users-db:
+    image: postgres
+    shm_size: 128mb
+    volumes:
+      - ./docker-volumes/users-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 8764
+      POSTGRES_DB: test
+    ports:
+      - 5432:5432
